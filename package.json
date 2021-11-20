@@ -1,0 +1,36 @@
+{
+  "name": "@4lch4/ansel-syncer",
+  "version": "0.0.0",
+  "description": "A Cron/Batch job responsible for updating the Redis used by Ansel to limit calls to the DigitalOcean Spaces API.",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "scripts": {
+    "docker:build": "docker build -t 4lch4/ansel-sync:latest .",
+    "docker:stop": "docker stop ansel-sync && docker rm ansel-sync",
+    "docker:start": "./start.sh",
+    "docker:refresh": "yarn docker:build && yarn docker:stop && yarn docker:start",
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "author": {
+    "name": "4lch4",
+    "email": "hey@4lch4.email",
+    "url": "https://alcha.org"
+  },
+  "keywords": [
+    "batch",
+    "redis",
+    "cronjob"
+  ],
+  "dependencies": {
+    "@4lch4/logger": "^1.7.4",
+    "aws-sdk": "^2.1020.0",
+    "ioredis": "^4.28.0"
+  },
+  "devDependencies": {
+    "@types/ioredis": "^4.28.0",
+    "@types/node": "^16.11.6",
+    "prettier": "^2.4.1",
+    "typescript": "^4.4.4"
+  }
+}

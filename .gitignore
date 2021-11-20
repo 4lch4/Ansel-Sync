@@ -1,0 +1,5 @@
+node_modules
+dist
+start.sh
+local.settings.json
+/*.sh
